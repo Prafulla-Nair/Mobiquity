@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Mobiquity</string>
+    <string name="categories_fragment_label">Categories</string>
+    <string name="products_fragment_label">Products</string>
+    <string name="detail_fragment_label">Product Detail</string>
+    <string name="product_image">Product Image</string>
+    <string name="error_text">An error occurred while loading Data. Try again later.</string>
+    <string name="space">\u0020</string>
+</resources>
