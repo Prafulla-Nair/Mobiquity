@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -50,7 +49,7 @@ class CategoriesFragment : Fragment(),
     }
 
     private fun observeViewModel() {
-        viewModel.categories.observe(viewLifecycleOwner, Observer { categories ->
+        viewModel.categories.observe(viewLifecycleOwner, { categories ->
             categories?.let {
                 swipeRefreshLayout.isRefreshing = false
                 categoriesList.visibility = View.VISIBLE
@@ -59,11 +58,11 @@ class CategoriesFragment : Fragment(),
             }
         })
 
-        viewModel.categoriesLoadError.observe(viewLifecycleOwner, Observer { isError ->
+        viewModel.categoriesLoadError.observe(viewLifecycleOwner, { isError ->
             isError?.let { categoriesError.visibility = if (it) View.VISIBLE else View.GONE }
         })
 
-        viewModel.loading.observe(viewLifecycleOwner, Observer { isLoading ->
+        viewModel.loading.observe(viewLifecycleOwner, { isLoading ->
             isLoading?.let {
                 loadingView.visibility = if (it) View.VISIBLE else View.GONE
                 if (it) {

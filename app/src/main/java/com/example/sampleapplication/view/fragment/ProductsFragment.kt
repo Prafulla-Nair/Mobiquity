@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -44,7 +43,7 @@ class ProductsFragment : Fragment(), ProductClickInterface {
     }
 
     private fun observeViewModel() {
-        viewModel.selectedCategory.observe(viewLifecycleOwner, Observer {
+        viewModel.selectedCategory.observe(viewLifecycleOwner, {
             val categoryName = it?.name ?: getString(R.string.product_image)
             (activity as MainActivity).supportActionBar?.title = categoryName
             productsList.visibility = View.VISIBLE

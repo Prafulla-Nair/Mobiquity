@@ -10,7 +10,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.sampleapplication.R
 import com.example.sampleapplication.view.util.getProgressDrawable
 import com.example.sampleapplication.view.util.loadImage
@@ -38,7 +37,7 @@ class DetailsFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.selectedProduct.observe(viewLifecycleOwner, Observer {
+        viewModel.selectedProduct.observe(viewLifecycleOwner, {
             dataBinding.setVariable(BR.productDetails, it)
             val image = dataBinding.root.productImageView
             val progressDrawable = getProgressDrawable(image.context)
